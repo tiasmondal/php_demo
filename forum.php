@@ -130,22 +130,149 @@ else
 <div class="content" id="3i">
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 
  var coll = document.getElementsByClassName("collapsible");
 
-var i,func1=0,func2=0;
+var i,func1=1,func2=0;
 var x=coll.length;
+var flag=1;
+var array=[];
+function getid()
+{var x=this.id;
+var input=document.getElementsByClassName('collapsible');
+var comment=document.getElementsByClassName('button');
+var y=input[x+3].innerHTML;
+var z=comment[x].innerHTML;
+   $.ajax({
+            url:"target.php", //the page containing php script
+            type: "post", //request type,
+            data:"topic:y,comment:z,",
+            success: function(result)  {
+                      alert('success');
+                    }
+                     error: function(result)
+                {alert("nothing");
+                }
+
+
+         });
+    
+
+}
+function allow(array)
+{var array;
+    $.ajax({
+            url:"target.php", //the page containing php script
+            type: "post", //request type,
+            data:"",
+            success: function(result)  {
+                    
+                  
+                        
+                        var array1=result;
+                        
+    
+    
+    
+    
+    
+    var word="",count=0,i=0;
+    var start=0,end=0;
+    for( i=0;i<array1.length;i=i+1)
+    {
+        if(array1[i]==',')
+            { 
+              
+              
+              //var word="";
+              
+              array.push(array1.slice(start,i));
+              
+              
+              i=i+1;
+              start=i;
+            }
+            
+            
+
+    }
+    
+    var con=array;
+
+for(var j=0;j<con.length;++j)
+{var coll = document.getElementsByClassName("collapsible");
+var newTodo = document.createElement('button');
+newTodo.className="collapsible";
+newTodo.textContent=con[j];
+var content = coll[coll.length-1].nextElementSibling;
+content.parentNode.insertBefore(newTodo, content.nextSibling);
+coll[coll.length-1].id=coll.length-1;
+
+
+var content1=document.createElement('div');
+//content1.innerHTML="<p>"+con[j].toString()+"</p>";
+content1.innerHTML="<form method='post'><input class='button' type='text'><button id="+String(j)+" onclick='getid()'>Submit</bytton></form>";
+content1.className="content";
+
+coll[coll.length-1].parentNode.insertBefore(content1, coll[coll.length-1].nextSibling);
+coll = document.getElementsByClassName("collapsible");
+}
+                     
+     hello();                               //Optional
+                flag=0;},
+            error: function(result)
+                {alert("nothing");
+                }
+
+
+         });
+    
+}
+/*function rendetion()
+{
+    var array1;
+    
+    
+    array1=allow();
+    
+    alert(array1);
+    var word,count=0;
+    for(var i=0;i<
+        array1.length;++i)
+    {
+        if(array1[i]==',')
+            {
+              array.append(word);
+              count=0;
+              var word;
+              ++i;
+            }
+            word[count]=array[i];
+            ++count;
+
+    }
+    return(array);
+}*/
+
+allow(array);
+
+function rendetion()
+{
+
+}
 function hello()
-{var func1=0;
+{flag=1;
+    var open=0,close=0;
+
 var newTodo = document.createElement('button');
 newTodo.className="collapsible";
 newTodo.textContent="My homework"
 var content = coll[coll.length-1].nextElementSibling;
 content.parentNode.insertBefore(newTodo, content.nextSibling);
 coll[coll.length-1].id=coll.length-1;
-alert(coll.length);
+
 
 var content1=document.createElement('div');
 content1.innerHTML="<p>The nextElementSibling property returns the element immediately following the specified element, in the same tree level.</p>";
@@ -157,28 +284,31 @@ coll = document.getElementsByClassName("collapsible");
 for(i=0;i<coll.length;i=i+1)
     {
         coll[i].addEventListener("click", function() {
-    alert(i.toString()+"gg");
+          
+    //alert(i.toString()+"gg");
     //alert(coll[i].innerHTML);
     x=this.id;
     
-    alert(x);
+  
     //this.classList.toggle("active");
     var content = document.getElementsByClassName("content");
     
 
-    if(content[x].style.display=='block' )
-        {content[x].style.display='none';
-   
-}
-    else 
+    if(content[x].style.display==='block')
         {
-            content[x].style.display='block';
+
+}
+else
+{
+    content[x].style.display='block';
             
-        }
+}
+   
     
  
-    alert(content[x].innerHTML);
+    //alert(content[x].innerHTML);
     
+
 
 
   });
@@ -186,35 +316,38 @@ for(i=0;i<coll.length;i=i+1)
 
 }
 
-    for(i=0;i<coll.length;i=i+1)
+   { for(i=0;i<coll.length;i=i+1)
     {
         coll[i].addEventListener("click", function() {
-    alert(i.toString()+"gg");
+    //alert(i.toString()+"gg");
     //alert(coll[i].innerHTML);
     x=this.id;
     
-    alert(x);
+    
     //this.classList.toggle("active");
     var content = document.getElementsByClassName("content");
     
 
-    if(content[x].style.display=='block' )
-        {content[x].style.display='none';
-   
+    {if(content[x].style.display==='block' )
+        {
+
 }
     else 
         {
             content[x].style.display='block';
             
+           
         }
     
  
-    alert(content[x].innerHTML);
+    //alert(content[x].innerHTML);
     
 
-
+}
   });
 }
+}
+
 
     
 
