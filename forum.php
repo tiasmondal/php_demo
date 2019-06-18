@@ -139,7 +139,7 @@ var i,func1=1,func2=0;
 var x=coll.length;
 var flag=1;
 var array=[];
-function getid()
+/*function getid()
 {var x=this.id;
 var input=document.getElementsByClassName('collapsible');
 var comment=document.getElementsByClassName('button');
@@ -160,7 +160,7 @@ var z=comment[x].innerHTML;
          });
     
 
-}
+}*/
 function allow(array)
 {var array;
     $.ajax({
@@ -266,7 +266,7 @@ function hello()
 {flag=1;
     var open=0,close=0;
 
-var newTodo = document.createElement('button');
+/*var newTodo = document.createElement('button');
 newTodo.className="collapsible";
 newTodo.textContent="My homework"
 var content = coll[coll.length-1].nextElementSibling;
@@ -279,7 +279,7 @@ content1.innerHTML="<p>The nextElementSibling property returns the element immed
 content1.className="content";
 
 coll[coll.length-1].parentNode.insertBefore(content1, coll[coll.length-1].nextSibling);
-coll = document.getElementsByClassName("collapsible");
+coll = document.getElementsByClassName("collapsible");*/
 
 for(i=0;i<coll.length;i=i+1)
     {
@@ -380,14 +380,15 @@ else
   <!-- Modal content -->
   <div id="modal-content">
     <span class="close" onclick="fff()">close</span>
-    <form method="post" id="tias" action="target.php"> 
-    <input type="text" name="newtopic">
-    <button type="submit">Submit</button>
+    <form method="post" id="tias"> 
+    <input type="text" id="tias1" name="newtopic">
+    <button type="submit" onclick='data()'>Submit</button>
 </form>
 </div>
 </div>
 <script>
 // Get the modal
+
 var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
@@ -399,6 +400,7 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal 
  function modd() {
     modal.style.display = "block";
+   
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -412,5 +414,30 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+
 </script>
-<button onclick='hello()'>Hello</button>
+<button onclick='modd()'>Add topic</button>
+<script type="text/javascript">
+    function data()
+{   
+    var x=document.getElementById('tias1').value;
+    
+    if(x!="")
+    {
+$.ajax({
+            url:"topic.php", //the page containing php script
+            type: "post", //request type,
+            data:{topic:x},
+            success: function(result)  {
+                      alert("Topic Successfully added");
+                      hello();
+                    }
+                     
+
+
+         });
+    }
+
+}
+</script>
