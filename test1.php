@@ -23,6 +23,7 @@ opacity:0.9;
 top:30px;
 color:white;
 background-image:url('back2.jpg');
+background-size: contain;
 border-radius:30px;
      }
 #z{width:150px;
@@ -99,15 +100,15 @@ $user_type=$_POST["user_type"];
 
 <pre style="font-size:275%">
 <form method="post" id="tias" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
-<input type="text" class="x" placeholder="Type name" name="name"> <span style="color:white;font-size:50%;"><?php echo $nameerr; ?></span>
+<input type="text" class="x" placeholder="Type name" name="name"> <span style="color:white;font-size:50%; margin-left:2%;"><?php echo $nameerr; ?></span>
 
-<input type="text" class="x" placeholder="email" name="email"> <span style="color:whitered;font-size:50%;"><?php echo $emailerr; ?></span>
+<input type="text" class="x" placeholder="email" name="email"> <span style="color:whitered;font-size:50%; margin-left:2%;"><?php echo $emailerr; ?></span>
 
-<input type="text" class="x" placeholder="Username" name="username"> <span style="color:white;font-size:50%;"><?php echo $usererr; ?></span>
+<input type="text" class="x" placeholder="Username" name="username"> <span style="color:white;font-size:50%; margin-left:2%;"><?php echo $usererr; ?></span>
 
 <input type="password" class="x" placeholder="*********" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> <span style="color:white;font-size:50%;"> <?php echo $passworderr; ?></span>
 
-<input type="radio" name="user_type" value="user">User   <input type="radio" name="user_type" value="admin" >Admin    <span style="color:white;font-size:50%;"><?php echo $user_typeerr; ?></span>
+<input type="radio" name="user_type" value="user"><span style="font-size: 80%;">User   </span><input type="radio" name="user_type" value="admin" ><span style="font-size:80%">Admin  </span>  <span style="color:white;font-size:50%;"><?php echo $user_typeerr; ?></span>
 <input type="submit" id="z">
 </form>
 </pre>

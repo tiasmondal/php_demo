@@ -38,6 +38,7 @@ left: 250px;
 top:60px;
 border-radius:20px;
 background-image: url('back1.jpg');
+background-size: contain;
 }
 #t2{width:200px;
 height:50px;
@@ -114,9 +115,9 @@ $_SESSION['user_type']=$user_type=$_POST["user_type"];
 
       <input type="text" class="x" placeholder="Username" title="your username" name="username">   <span style="color:white;font-size:75%;font-family:Comic sans ms;"><?php echo $usererr; ?></span>
 
-      <input type="password" class="x" placeholder="Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> <span style="color:white;font-size:75%;font-family:Comic sans ms;"> <?php echo $passworderr; ?></span>
+      <input type="password" class="x" placeholder="Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> <span style="color:white;font-size:75%;font-family:Comic sans ms; margin-left: 2%"> <?php echo $passworderr; ?></span>
 
-         	<input type="radio" name="user_type" value="user" style="font-family:Comic sans ms;">User   <input type="radio" name="user_type" value="admin" style="font-family:Comic sans ms;">Admin    <span style="color:white;font-size:75%;font-family:Comic sans ms;"><?php echo $user_typeerr; ?></span>
+         	<input type="radio" name="user_type" value="user" style="font-family:Comic sans ms;">User   <input type="radio" name="user_type" value="admin" style="font-family:Comic sans ms;">Admin    <span style="color:white;font-size:75%;font-family:Comic sans ms;margin-left: 14%;"><?php echo $user_typeerr; ?></span>
 
 <input type="submit" value="login" id="t2">
 </form>

@@ -30,12 +30,29 @@ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
+    color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-
+.mid-d{
+  text-align: center;
+  width: 100%;
+}
+.btn-top{
+  margin: 0 auto;
+    /* margin-left: 47%; */
+    width: 20%;
+    /* height: 29%; */
+    font-size: 2em;
+    margin-top: 4%;
+    border-radius: 22px;
+    background-color: rgba(78,68,56,0.6);
+    padding: 5px 2px 2px 2px;
+    color: white;
+    outline: none;
+    border: none;
+}
 .close:hover,
 .close:focus {
     color: #000;
@@ -117,7 +134,8 @@ else
 
 <h1 style='text-align:center;color:white;font-family:comic sans ms'>TOPICS </h1>
 
-<p style="color:white">TOPICS</p>
+<!-- <p style="color:white">TOPICS</p> -->
+<div class="box-f">
 <button class="collapsible" id="0">Open Section 1</button>
 <div class="content" id="1i">
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -129,6 +147,7 @@ else
 <button class="collapsible" id="2">Open Section 3</button>
 <div class="content" id="3i">
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -282,7 +301,7 @@ coll[coll.length-1].id=coll.length-1;
 
 var content1=document.createElement('div');
 //content1.innerHTML="<p>"+con[j].toString()+"</p>";
-content1.innerHTML="<form method='post'><input class='button123' type='text'><button id="+String(j)+" onclick='getid(this.id,1)'>Submit</button></form><p class='paras' id="+String(j)+">peep"+String(j)+"</p>";
+content1.innerHTML="<form method='post'><input class='button123' type='text' style='width: 100%;margin-top: 2%;height: 5vh;'><div style='width:100%; text-align:center;'><button id="+String(j)+" onclick='getid(this.id,1)' style='    margin-top: 2%;width: 20%;padding: 15px 5px 15px 5px;border-readius: 20px;border-radius: 20px;border: none;font-size: 1em;'>Submit</button></div></form><p class='paras' id="+String(j)+">peep"+String(j)+"</p>";
 content1.className="content";
 
 coll[coll.length-1].parentNode.insertBefore(content1, coll[coll.length-1].nextSibling);
@@ -534,10 +553,26 @@ else
 
   <!-- Modal content -->
   <div id="modal-content">
-    <span class="close" onclick="fff()">close</span>
+    <!-- <span class="close" onclick="fff()">close</span> -->
+    <span class="close" style='font-size:30px; color: white' onclick="fff()">&#10006;</span>
     <form method="post" id="tias"> 
-    <input type="text" id="tias1" name="newtopic">
-    <button type="submit" onclick='data()'>Submit</button>
+    <input type="text" id="tias1" name="newtopic" style="    width: 100%;
+    margin-top: 5%;
+    height: 6vh;
+    /* padding: 5px; */
+    border-radius: 20px;
+    padding-left: 15px;">
+    <div style="width: 100%;text-align:center;">
+    <button type="submit" style="    
+    margin-top: 4%;
+    width: 20%;
+    padding: 5px 5px 5px 5px;
+    border-readius: 20px;
+    border-radius: 20px;
+    border: none;
+    font-size: 1em;"
+    onclick='data()'>Submit</button>
+    </div>
 </form>
 </div>
 </div>
@@ -573,7 +608,20 @@ window.onclick = function(event) {
 
 
 </script>
-<button onclick='modd()'>Add topic</button>
+<div class="mid-d" style="width: 100%; text-align: center;">
+<button onclick='modd()' class="btn-top" style="  margin: 0 auto;
+    /* margin-left: 47%; */
+    width: 20%;
+    /* height: 29%; */
+    font-size: 2em;
+    margin-top: 4%;
+    border-radius: 22px;
+    background-color: rgba(78,68,56,0.6);
+    padding: 5px 2px 2px 2px;
+    color: white;
+    outline: none;
+    border: none;">Add topic</button>
+</div>
 <script type="text/javascript">
     function data()
 {   
