@@ -114,10 +114,10 @@ echo "<script> window.location.assign('admin.php'); </script>";
 else
  echo "<h1 style='text-align:center;color:white;font-family:comic sans ms'>Hello  " .$_SESSION['name']. "  WELCOME </h1>" ; 
 ?>
-<button id="myBtn" onclick='modd()'>New Topic</button>
+
 <h1 style='text-align:center;color:white;font-family:comic sans ms'>TOPICS </h1>
 
-<p>Collapsible Set:</p>
+<p style="color:white">TOPICS</p>
 <button class="collapsible" id="0">Open Section 1</button>
 <div class="content" id="1i">
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
