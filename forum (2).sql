@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2019 at 08:19 AM
+-- Generation Time: Jun 19, 2019 at 07:52 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -42,6 +42,7 @@ CREATE TABLE `members` (
 
 INSERT INTO `members` (`name`, `email`, `username`, `password`, `user_type`) VALUES
 ('hbcbjb', 'bbjbcdjbjb@gmail.com', 'aaaaaaa', 'qwerty12Y', 'user'),
+('tias', 'tias@gmail.com', 'tias', 'Tiasmondal123', 'admin'),
 ('Tias Mondal', 'tiasmondal9161@gmail.com', 'tiasmondal', 'tiasmondal1999T', 'user');
 
 -- --------------------------------------------------------
@@ -62,9 +63,8 @@ CREATE TABLE `topics` (
 --
 
 INSERT INTO `topics` (`topic`, `comment`, `upvote`, `downvote`) VALUES
-('Hi', 'I LU', 1, 2),
-('fi', 'hello', 2, 4),
-('topic123434', 'ggknk', 5, 4);
+('Topic 1', 'NULL|comment 1\r\n\r\n|comment 2\r\n\r\n|edjjf\r\n\r\n', 0, 0),
+('Topic 2', 'NULL|Comment 1\r\n\r\n', 0, 0);
 
 --
 -- Indexes for dumped tables
