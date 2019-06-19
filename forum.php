@@ -137,32 +137,101 @@ else
 
 var i,func1=1,func2=0;
 var x=coll.length;
-var flag=1;
 var array=[];
-/*function getid()
-{var x=this.id;
+var globalvar;
+function comment()
+{var x;
+
+for(x=0;x<globalvar;++x)
+{
+  getid(x,2);
+}
+}
+function getid(x,number)
+{//var x=$(this).attr('id');;
+    
+
 var input=document.getElementsByClassName('collapsible');
-var comment=document.getElementsByClassName('button');
-var y=input[x+3].innerHTML;
-var z=comment[x].innerHTML;
+var comment=document.getElementsByClassName('button123');
+
+var l=Number(x)+3;
+
+var y=input[l].innerHTML;
+var z=comment[x].value;
+
    $.ajax({
-            url:"target.php", //the page containing php script
+            url:"comment.php", //the page containing php script
             type: "post", //request type,
-            data:"topic:y,comment:z,",
+            data:{'topic':y,'comment':z},
+            dataType:"text",
             success: function(result)  {
-                      alert('success');
+              if(number==1)
+             { $.ajax({
+            url:"comment1.php", //the page containing php script
+            type: "post", //request type,
+            data:{comment:result,topic:y},
+            success: function()  {
+                      alert("Topic Successfully added");
+                      return;
                     }
-                     error: function(result)
-                {alert("nothing");
-                }
+                     
+
+
+         });
+         }
+                      
+                      var i,start=0;
+                      var comment1=[];
+                      for( i=0;i<result.length;i=i+1)
+    {
+        if(result[i]=='|')
+            { 
+              
+              
+              //var word="";
+              
+              comment1.push(result.slice(start,i));
+              
+              
+              i=i+1;
+              start=i;
+            }
+            
+            
+
+    }
+    var comment1234=document.getElementsByClassName('paras');
+    var str="";
+    var str1="<br>";
+    for(i=0;i<comment1.length;++i)
+    {
+        str=str.concat(comment1[i]);
+        str=str.concat(str1);
+
+
+    }
+
+
+       comment1234[x].innerHTML=str;
+       
+
+                    }
+                     
 
 
          });
     
 
-}*/
+}
+function noop()
+{
+
+}
 function allow(array)
-{var array;
+{
+  {
+
+    var array;
     $.ajax({
             url:"target.php", //the page containing php script
             type: "post", //request type,
@@ -200,7 +269,7 @@ function allow(array)
     }
     
     var con=array;
-
+globalvar=con.length;
 for(var j=0;j<con.length;++j)
 {var coll = document.getElementsByClassName("collapsible");
 var newTodo = document.createElement('button');
@@ -213,7 +282,7 @@ coll[coll.length-1].id=coll.length-1;
 
 var content1=document.createElement('div');
 //content1.innerHTML="<p>"+con[j].toString()+"</p>";
-content1.innerHTML="<form method='post'><input class='button' type='text'><button id="+String(j)+" onclick='getid()'>Submit</bytton></form>";
+content1.innerHTML="<form method='post'><input class='button123' type='text'><button id="+String(j)+" onclick='getid(this.id,1)'>Submit</button></form><p class='paras' id="+String(j)+">peep"+String(j)+"</p>";
 content1.className="content";
 
 coll[coll.length-1].parentNode.insertBefore(content1, coll[coll.length-1].nextSibling);
@@ -221,15 +290,101 @@ coll = document.getElementsByClassName("collapsible");
 }
                      
      hello();                               //Optional
-                flag=0;},
+                flag=0;
+              comment();
+        allow=noop;},
             error: function(result)
                 {alert("nothing");
                 }
 
 
          });
+
+        
+  }
+
     
 }
+//##############################################################
+function allow1(array)
+{
+  {
+
+    var array;
+    $.ajax({
+            url:"target.php", //the page containing php script
+            type: "post", //request type,
+            data:"",
+            success: function(result)  {
+                    
+                  
+                        
+                        var array1=result;
+                        
+    
+    
+    
+    
+    
+    var word="",count=0,i=0;
+    var start=0,end=0;
+    for( i=0;i<array1.length;i=i+1)
+    {
+        if(array1[i]==',')
+            { 
+              
+              
+              //var word="";
+              
+              array.push(array1.slice(start,i));
+              
+              
+              i=i+1;
+              start=i;
+            }
+            
+            
+
+    }
+    
+    var con=array;
+globalvar=con.length;
+for(var j=0;j<con.length;++j)
+{var coll = document.getElementsByClassName("collapsible");
+var newTodo = document.createElement('button');
+newTodo.className="collapsible";
+newTodo.textContent=con[j];
+var content = coll[coll.length-1].nextElementSibling;
+content.parentNode.insertBefore(newTodo, content.nextSibling);
+coll[coll.length-1].id=coll.length-1;
+
+
+var content1=document.createElement('div');
+//content1.innerHTML="<p>"+con[j].toString()+"</p>";
+content1.innerHTML="<form method='post'><input class='button123' type='text'><button id="+String(j)+" onclick='getid(this.id)'>Submit</button></form><p class='paras' id="+String(j)+">peep"+String(j)+"</p>";
+content1.className="content";
+
+coll[coll.length-1].parentNode.insertBefore(content1, coll[coll.length-1].nextSibling);
+coll = document.getElementsByClassName("collapsible");
+}
+                     
+     hello();                               //Optional
+                flag=0;
+              comment();
+        allow=noop;},
+            error: function(result)
+                {
+                }
+
+
+         });
+
+        
+  }
+
+    
+}
+//###########################################3
 /*function rendetion()
 {
     var array1;
@@ -399,6 +554,7 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
  function modd() {
+    allow=allow1;
     modal.style.display = "block";
    
 }
