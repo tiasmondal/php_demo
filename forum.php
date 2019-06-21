@@ -169,6 +169,21 @@ var comment=document.getElementsByClassName('button123');
 var l=Number(x)+1;
 
 var y=input[l].innerHTML;
+y=y.replace("<pre>","");
+
+var start=0;
+
+for(var i=0;i<y.length;++i)
+{
+  if(y[i]=="<")
+  {
+    start=i;
+    break;
+  }
+}
+/*z=z.replace('<button class="upvote" onclick="upvoteid(this.id,1)" id="'+String(id)+'">upvote</button><p class="upvotespace"></p><button  class="downvote" onclick="upvoteid(this.id,1)" id="'+String(id)+'">downvote</button></p>',"");*/
+y=y.slice(0,start);
+y=y.trim();
 var z=comment[x].value;
 
    $.ajax({
@@ -235,6 +250,130 @@ var z=comment[x].value;
     
 
 }
+function upvote()
+{var x,y,z;
+  
+
+for(x=0;x<globalvar;++x)
+{
+  upvoteid(x,2);
+  downvoteid(x,2);
+  
+}
+}
+function downvoteid(id,number)
+{
+  var input=document.getElementsByClassName('downvote');
+var topic=document.getElementsByClassName('collapsible');
+var l=Number(id)+1;
+var t;
+var z=topic[l].innerHTML;
+z=z.replace("<pre>","");
+
+var start=0;
+
+for(var i=0;i<z.length;++i)
+{
+  if(z[i]=="<")
+  {
+    start=i;
+    break;
+  }
+}
+/*z=z.replace('<button class="upvote" onclick="upvoteid(this.id,1)" id="'+String(id)+'">upvote</button><p class="upvotespace"></p><button  class="downvote" onclick="upvoteid(this.id,1)" id="'+String(id)+'">downvote</button></p>',"");*/
+z=z.slice(0,start);
+z=z.trim();
+
+if(number==1)
+              {
+                $.ajax({
+                url:"downvote1.php",
+                type: "post",
+                data:{'topic':z},
+                //dataType:"text",
+                success: function(result1)
+                { alert("Downvoted");
+                  upvote();
+                }
+              });
+          }
+
+$.ajax({
+  url:"downvote.php", //the page containing php script
+            type: "post", //request type,
+            data:{topic:z},
+            dataType:"text",
+            success: function(result)  {
+              
+          if(number==2)
+            {t=document.getElementsByClassName('downvotespace');
+          t[id].innerHTML=result;
+          
+            }
+             //window.location.reload();
+            }
+})
+
+
+}
+function upvoteid(id,number)
+{
+
+var input=document.getElementsByClassName('upvote');
+var topic=document.getElementsByClassName('collapsible');
+var l=Number(id)+1;
+var t;
+var z=topic[l].innerHTML;
+z=z.replace("<pre>","");
+
+var start=0;
+
+for(var i=0;i<z.length;++i)
+{
+  if(z[i]=="<")
+  {
+    start=i;
+    break;
+  }
+}
+/*z=z.replace('<button class="upvote" onclick="upvoteid(this.id,1)" id="'+String(id)+'">upvote</button><p class="upvotespace"></p><button  class="downvote" onclick="upvoteid(this.id,1)" id="'+String(id)+'">downvote</button></p>',"");*/
+z=z.slice(0,start);
+z=z.trim();
+
+if(number==1)
+              {
+                $.ajax({
+                url:"upvote1.php",
+                type: "post",
+                data:{'topic':z},
+                //dataType:"text",
+                success: function(result1)
+                { alert("Upvoted");
+                  upvote();
+                }
+              });
+          }
+
+$.ajax({
+  url:"upvote.php", //the page containing php script
+            type: "post", //request type,
+            data:{topic:z},
+            dataType:"text",
+            success: function(result)  {
+              
+          if(number==2)
+            {t=document.getElementsByClassName('upvotespace');
+          t[id].innerHTML=result;
+          
+            }
+             //window.location.reload();
+            }
+})
+
+
+
+
+}
 function noop()
 {
 
@@ -286,7 +425,7 @@ for(var j=0;j<con.length;++j)
 {var coll = document.getElementsByClassName("collapsible");
 var newTodo = document.createElement('button');
 newTodo.className="collapsible";
-newTodo.textContent=con[j];
+newTodo.innerHTML="<pre>"+con[j]+"<button class='upvote' onclick='upvoteid(this.id,1)' id="+String(j)+">upvote</button><pre class='upvotespace'></pre><button  class='downvote' onclick='downvoteid(this.id,1)' id="+String(j)+">downvote</button><pre class='downvotespace'></pre></pre>";
 var content = coll[coll.length-1].nextElementSibling;
 content.parentNode.insertBefore(newTodo, content.nextSibling);
 coll[coll.length-1].id=coll.length-1;
@@ -304,6 +443,7 @@ coll = document.getElementsByClassName("collapsible");
      hello();                               //Optional
                 flag=0;
               comment();
+              upvote();
         allow=noop;},
             error: function(result)
                 {alert("nothing");
@@ -628,6 +768,8 @@ $.ajax({
             data:{topic:x},
             success: function(result)  {
                       alert("Topic Successfully added");
+
+
                       hello();
                     }
                      
