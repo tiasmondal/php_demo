@@ -9,58 +9,79 @@ session_start();
 <!DOCTTYPE html>
 <html>
 <style>
-body{background-image:url('lib1.jpg');}
-.x{font-family:Comic Sans Ms;
-    width: 500px;
-    height: 45px;
-background: transparent;
-    padding: 0 5px 0 38px;
-    line-height: 1.2;
-border-bottom:1px solid white;
-font-size: 75%;
-border-top:none;
-border-left:none;
-border-right:none;
-color:white;
+body{  background-image: linear-gradient(to bottom right, #6a2eea,#BDF1ED);
+}
+#tias{
+  margin:0;
+  padding: 0;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  height: 70%;
+  width: 90%;
+}
+.x{
+  font-family:Comic Sans Ms;
+  width: 60%;
+  height: 10%;
+  line-height: 1.2;
+  font-size: 75%;
+  color:white;
+  border-right: none;
+  border-top: none;
+  border-radius: 2px;
 }
 
 
 
 
-div.t1{position:absolute;
-opacity:0.8;
-width:900px;
-height:500px;
-font-family:Comic Sans Ms;
-color:white;
-left: 250px;
-   
-top:60px;
-border-radius:20px;
-background-image: url('back1.jpg');
-background-size: contain;
+div.t1{
+  position:absolute;
+  top:15%;
+  left: 27%;
+  bottom: 15%;
+  width: 45%;
+  font-family:Comic Sans Ms;
+  color:white;
+  border-radius:5px;
+  background-size: contain;
+  background-image: linear-gradient(to bottom left, white,#bec2c4);
 }
-#t2{width:200px;
-height:50px;
-font-family:Comic Sans MS;
-font-size:75%;
-position:absolute;
-top:350px;
-left:90px;
-border-radius:30px;
+#t2{
+  width:20%;
+  height:12%;
+  font-family:Comic Sans MS;
+  font-size:150%;
+  position:absolute;
+  left: 20%;
+  bottom: 18%;
+  border-radius:5px;
+  box-shadow: none;
+  background-color: #03bdc4;
 }
-#t3{width:200px;
-font-family:Comic Sans MS;
-height:50px;
-font-size:150%;
-border:1 px solid green;
-position:absolute;
-top:400px;
-left:800px;
-border-radius:30px;
+#t2:hover{
+  background-color:#02c47d;
 }
+
+#t3{
+  width:25%;
+  height:6%;
+  font-family:Comic Sans MS;
+  font-size:150%;
+  position:absolute;
+  bottom: 18%;
+  left: 38%;
+  border-radius:5px;
+  box-shadow: none;
+  border-color: #FF634D;
+}
+#t3:hover{
+  background-color:#e7ff70;
+}
+
+
 ::placeholder {
-    color: white;
+    color: #4f5653;
     opacity: 1; /* Firefox */
 }
 
@@ -71,6 +92,17 @@ border-radius:30px;
 ::-ms-input-placeholder { /* Microsoft Edge */
    color: white;
 }
+.radio-b{
+  font-family:Comic sans ms;
+  font-size: 80%;
+  font-weight: bold;
+}
+.labels{
+color:black;
+font-size:18px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+}
 </style>
 <body>
 <?php
@@ -80,7 +112,7 @@ $username=$usererr=$email=$emailerr=$password=$passworderr=$user_type=$user_type
 
 
 if(empty($_POST["username"]))
-$usererr="Username Required";
+$usererr="Username";
 else
 {$_SESSION["username"]=$username=$_POST["username"];
 if (!preg_match("/^[a-zA-Z ]*$/",$username)) {
@@ -90,38 +122,35 @@ if (!preg_match("/^[a-zA-Z ]*$/",$username)) {
 }
 
 if(empty($_POST["password"]))
-$passworderr="Password Required";
+$passworderr="Password";
 else
 $_SESSION["password"]=$password=$_POST["password"];
 
 if(empty($_POST["user_type"]))
-$user_typeerr="User type is required";
+$user_typeerr="User type";
 else
 $_SESSION['user_type']=$user_type=$_POST["user_type"];
 
 ?>
-<pre>
-
-
-<h1 style="text-align:center;font-size:300%;font-family: 'Open Sans', sans-serif;">Library Portal</h1>
-</pre>
-
-
 
 <div class=t1>
-
-<pre style="font-size:200%">
+<h1 style="text-align:center;font-size:300%;font-family: 'Open Sans', sans-serif;color:#103024;">Login Portal</h1>
 <form method="post" id="tias" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" > 
-
-      <input type="text" class="x" placeholder="Username" title="your username" name="username">   <span style="color:white;font-size:75%;font-family:Comic sans ms;"><?php echo $usererr; ?></span>
-
-      <input type="password" class="x" placeholder="Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> <span style="color:white;font-size:75%;font-family:Comic sans ms; margin-left: 2%"> <?php echo $passworderr; ?></span>
-
-         	<input type="radio" name="user_type" value="user" style="font-family:Comic sans ms;">User   <input type="radio" name="user_type" value="admin" style="font-family:Comic sans ms;">Admin    <span style="color:white;font-size:75%;font-family:Comic sans ms;margin-left: 14%;"><?php echo $user_typeerr; ?></span>
+      <span class="labels" ><?php echo $usererr; ?></span><br>
+      <input type="text" class="x" placeholder="Username" title="your username" name="username">
+      <br>
+      <br>
+      <span class="labels"> <?php echo $passworderr; ?></span> <br>
+      <input type="password" class="x" placeholder="Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> 
+      <br>
+      <br>
+          <span class="labels"><?php echo $user_typeerr; ?></span> <br>
+         	<input type="radio" name="user_type" value="user" class="radio-b">User   
+          <input type="radio" name="user_type" value="admin" class="radio-b">Admin   <br>
+      <br>
 
 <input type="submit" value="login" id="t2">
 </form>
-</pre>
 </div>
 <form action="test1.php" >
 <input type="submit" value="Register" id="t3">
