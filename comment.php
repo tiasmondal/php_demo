@@ -12,7 +12,7 @@ while($row=$result->fetch_assoc())
 	//echo $row['comment'];
 	$prev=$row['comment'];
 	$str=$prev."|".$post;
-	echo($str);
+	//echo($str);
 }
 
 
